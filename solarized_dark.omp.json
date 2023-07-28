@@ -1,0 +1,179 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "final_space": false,
+    "console_title": true,
+    "console_title_style": "template",
+    "console_title_template": "{{ .SessionState.Path }}",
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "root",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#073642",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "root_icon": "👑"
+                    }
+                },
+                {
+                    "type": "path",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#073642",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "folder_icon": "📁",
+                        "style": "mixed",
+                        "home_icon": "🏠",
+                        "home_style": "folder"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "time",
+                    "style": "plain",
+                    "foreground": "#268bd2",
+                    "background": "#002b36",
+                    "properties": {
+                        "time_format": "15:04:05",
+                        "prefix": "<#93a1a1>\uE868</>"
+                    }
+                }
+            ]
+        },
+        {
+            "newline": true,
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                
+                {
+                    "type": "git",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#6c71c4",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "display_status": true,
+                        "display_stash_count": true,
+                        "display_upstream_icon": true
+                    }
+                },
+                {
+                    "type": "project",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#2aa198",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "📦",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "python",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#dc322f",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "🐍",
+                        "style": "mixed",
+                        "virtualenv_icon": "🐍",
+                        "virtualenv_prefix": "(",
+                        "virtualenv_suffix": ")",
+                        "conda_icon": "🐍",
+                        "conda_prefix": "(",
+                        "conda_suffix": ")"
+                    }
+                },
+                {
+                    "type": "dotnet",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#b58900",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": ".NET",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "node",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#268bd2",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "⬢",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "java",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#cb4b16",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "☕",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "rust",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#b58900",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "🦀",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "docker",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#268bd2",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "🐳",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "aws",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#268bd2",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "🅰",
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "az",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#268bd2",
+                    "background": "#eee8d5",
+                    "properties": {
+                        "symbol": "🅰",
+                        "style": "mixed"
+                    }
+                }
+            ]
+        }
+    ]
+}
