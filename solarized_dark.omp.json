@@ -45,7 +45,7 @@
                     "background": "#002b36",
                     "properties": {
                         "time_format": "15:04:05",
-                        "prefix": "<#93a1a1>\uE868</>"
+                        "prefix": "⏰"
                     }
                 }
             ]
@@ -69,7 +69,7 @@
                     "foreground": "#6c71c4",
                     "background": "#eee8d5",
                     "properties": {
-                        "symbol": "",
+                        "symbol": "🔀",
                         "display_status": true,
                         "display_stash_count": true,
                         "display_upstream_icon": true
@@ -110,7 +110,7 @@
                     "foreground": "#b58900",
                     "background": "#eee8d5",
                     "properties": {
-                        "symbol": ".NET",
+                        "symbol": "⚙️",
                         "style": "mixed"
                     }
                 },
