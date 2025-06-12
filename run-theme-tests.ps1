@@ -97,18 +97,51 @@ function Test-ThemePerformance {
     
     try {
         $theme = Get-Content $ThemeFile | ConvertFrom-Json
-        $segmentCount = 0
         
-        foreach ($block in $theme.blocks) {
-            if ($block.segments) {
-                $segmentCount += $block.segments.Count
+        # Load performance thresholds from config
+        $maxSegmentsPerBlock = 15  # Default fallback
+        $maxTotalSegments = 45     # Default: 3 blocks * 15 segments
+        
+        if (Test-Path $ConfigFile) {
+            try {
+                $config = Get-Content $ConfigFile | ConvertFrom-Json
+                if ($config.performance_tests.segment_count.max_segments_per_block) {
+                    $maxSegmentsPerBlock = $config.performance_tests.segment_count.max_segments_per_block
+                    $maxTotalSegments = $maxSegmentsPerBlock * 3  # Assume max 3 blocks
+                }
+            } catch {
+                Write-TestOutput "Warning: Could not load config, using defaults" -Level "Warning"
             }
         }
         
-        Write-TestOutput "Total segments: $segmentCount" -Level "Info"
+        $totalSegments = 0
+        $blockIndex = 0
+        $performanceIssues = @()
         
-        if ($segmentCount -gt 20) {
-            Write-TestOutput "Warning: High segment count may impact performance" -Level "Warning"
+        foreach ($block in $theme.blocks) {
+            if ($block.segments) {
+                $blockSegmentCount = $block.segments.Count
+                $totalSegments += $blockSegmentCount
+                $blockIndex++
+                
+                Write-TestOutput "Block $blockIndex segments: $blockSegmentCount" -Level "Info"
+                
+                if ($blockSegmentCount -gt $maxSegmentsPerBlock) {
+                    $performanceIssues += "Block $blockIndex has $blockSegmentCount segments (max: $maxSegmentsPerBlock)"
+                }
+            }
+        }
+        
+        Write-TestOutput "Total segments: $totalSegments (max recommended: $maxTotalSegments)" -Level "Info"
+        
+        if ($totalSegments -gt $maxTotalSegments) {
+            $performanceIssues += "Total segment count $totalSegments exceeds recommended maximum of $maxTotalSegments"
+        }
+        
+        if ($performanceIssues.Count -gt 0) {
+            foreach ($issue in $performanceIssues) {
+                Write-TestOutput "Performance Warning: $issue" -Level "Warning"
+            }
             return $false
         }
         
