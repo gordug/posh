@@ -53,7 +53,7 @@ function Test-SegmentProperty {
     } elseif ($ExpectedValue -is [int]) {
         $actualValue -eq $ExpectedValue
     } else {
-        $actualValue -ne $null
+        $null -ne $actualValue
     }
     
     return Test-Assert -Condition $condition -Message "Property '$PropertyPath' = '$actualValue' (expected: '$ExpectedValue')" -TestName $TestName
@@ -84,7 +84,7 @@ $sessionSegment = $theme.blocks[0].segments | Where-Object { $_.type -eq "sessio
 $testResults += Test-SegmentExists -Theme $theme -SegmentType "session" -TestName "Session-Exists"
 if ($sessionSegment) {
     $testResults += Test-SegmentProperty -Segment $sessionSegment -PropertyPath "style" -ExpectedValue "powerline" -TestName "Session-Style"
-    $testResults += Test-SegmentProperty -Segment $sessionSegment -PropertyPath "powerline_symbol" -ExpectedValue "uE0B0" -TestName "Session-PowerlineSymbol"
+    $testResults += Test-SegmentProperty -Segment $sessionSegment -PropertyPath "powerline_symbol" -ExpectedValue "" -TestName "Session-PowerlineSymbol"
     $testResults += Test-SegmentProperty -Segment $sessionSegment -PropertyPath "properties.ssh_icon" -ExpectedValue "🌐" -TestName "Session-SSHIcon"
     $testResults += Test-SegmentProperty -Segment $sessionSegment -PropertyPath "properties.user_info_separator" -ExpectedValue "@" -TestName "Session-UserSeparator"
     $testResults += Test-SegmentProperty -Segment $sessionSegment -PropertyPath "foreground" -ExpectedValue "#073642" -TestName "Session-Foreground"
@@ -143,13 +143,36 @@ Write-Host "`n🔀 Testing Enhanced Git Segment..." -ForegroundColor Yellow
 $gitSegment = $theme.blocks[2].segments | Where-Object { $_.type -eq "git" }
 
 if ($gitSegment) {
+    # Basic Git icons
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.branch_icon" -ExpectedValue "🔀 " -TestName "Git-BranchIcon"
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.commit_icon" -ExpectedValue "📝 " -TestName "Git-CommitIcon"
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.branch_ahead_icon" -ExpectedValue "⬆️" -TestName "Git-AheadIcon"
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.branch_behind_icon" -ExpectedValue "⬇️" -TestName "Git-BehindIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.branch_gone_icon" -ExpectedValue "🚫" -TestName "Git-BranchGoneIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.tag_icon" -ExpectedValue "🏷️ " -TestName "Git-TagIcon"
+    
+    # Fetch status properties
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.fetch_status" -ExpectedValue $true -TestName "Git-FetchStatus"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.fetch_upstream_icon" -ExpectedValue $true -TestName "Git-FetchUpstreamIcon"
+    
+    # Workflow state icons
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.rebase_icon" -ExpectedValue "🔄 " -TestName "Git-RebaseIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.cherry_pick_icon" -ExpectedValue "🍒 " -TestName "Git-CherryPickIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.revert_icon" -ExpectedValue "↩️ " -TestName "Git-RevertIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.merge_icon" -ExpectedValue "🔗 " -TestName "Git-MergeIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.no_commits_icon" -ExpectedValue "🆕 " -TestName "Git-NoCommitsIcon"
+    
+    # All status icons
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.added" -ExpectedValue "➕" -TestName "Git-AddedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.copied" -ExpectedValue "📋" -TestName "Git-CopiedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.deleted" -ExpectedValue "🗑️" -TestName "Git-DeletedIcon"
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.modified" -ExpectedValue "📝" -TestName "Git-ModifiedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.moved" -ExpectedValue "📦" -TestName "Git-MovedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.renamed" -ExpectedValue "📛" -TestName "Git-RenamedIcon"
     $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.staged" -ExpectedValue "🎯" -TestName "Git-StagedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.unmerged" -ExpectedValue "⚠️" -TestName "Git-UnmergedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.untracked" -ExpectedValue "❓" -TestName "Git-UntrackedIcon"
+    $testResults += Test-SegmentProperty -Segment $gitSegment -PropertyPath "properties.status.ignored" -ExpectedValue "🙈" -TestName "Git-IgnoredIcon"
 }
 
 # Test 6: Enhanced .NET Segment Validation
