@@ -1,0 +1,163 @@
+{
+    "theme_tests": {
+        "session_segment": {
+            "description": "Session segment for SSH and user context",
+            "required": true,
+            "expected_properties": {
+                "type": "session",
+                "style": "powerline",
+                "powerline_symbol": "\uE0B0",
+                "foreground": "#073642",
+                "background": "#dc322f",
+                "properties.ssh_icon": "🌐",
+                "properties.user_info_separator": "@"
+            },
+            "validation_rules": [
+                "SSH icon must be globally accessible",
+                "Background color should indicate elevated/remote context",
+                "Must appear in first block for immediate visibility"
+            ]
+        },
+        "executiontime_segment": {
+            "description": "Execution time tracking for build/test performance",
+            "required": true,
+            "expected_properties": {
+                "type": "executiontime",
+                "style": "plain",
+                "foreground": "#b58900",
+                "background": "#002b36",
+                "properties.threshold": 500,
+                "properties.style": "roundrock",
+                "properties.prefix": "⏱️ "
+            },
+            "validation_rules": [
+                "Threshold should be 500ms or less for responsiveness",
+                "Must be in right-aligned block for minimal interference",
+                "Icon must be time-related and visually distinct"
+            ]
+        },
+        "status_segment": {
+            "description": "Command exit status with visual feedback",
+            "required": true,
+            "expected_properties": {
+                "type": "status",
+                "style": "powerline",
+                "powerline_symbol": "\uE0B0",
+                "foreground": "#073642",
+                "background": "#2aa198",
+                "properties.always_enabled": true
+            },
+            "conditional_logic": {
+                "success_icon": "✅",
+                "error_icon": "❌",
+                "error_background": "#dc322f",
+                "success_background": "#2aa198"
+            },
+            "validation_rules": [
+                "Must be first segment in main prompt for immediate feedback",
+                "Conditional logic must handle all exit codes",
+                "Error state must be visually prominent"
+            ]
+        },
+        "azure_segment": {
+            "description": "Azure CLI integration with graceful fallback",
+            "required": false,
+            "expected_properties": {
+                "type": "azure",
+                "style": "powerline",
+                "powerline_symbol": "\uE0B0",
+                "foreground": "#268bd2",
+                "background": "#eee8d5",
+                "properties.prefix": "☁️ ",
+                "properties.display_mode": "context",
+                "properties.missing_command_text": ""
+            },
+            "validation_rules": [
+                "Must handle missing Azure CLI gracefully",
+                "Should only appear when Azure context is available",
+                "Icon must be cloud-related and brand appropriate"
+            ]
+        },
+        "enhanced_git_segment": {
+            "description": "Enhanced git status with detailed workflow icons",
+            "required": true,
+            "expected_properties": {
+                "type": "git",
+                "properties.branch_icon": "🔀 ",
+                "properties.commit_icon": "📝 ",
+                "properties.fetch_status": true,
+                "properties.fetch_upstream_icon": true,
+                "properties.branch_ahead_icon": "⬆️",
+                "properties.branch_behind_icon": "⬇️",
+                "properties.branch_gone_icon": "🚫",
+                "properties.tag_icon": "🏷️ "
+            },
+            "status_icons": {
+                "added": "➕",
+                "copied": "📋",
+                "deleted": "🗑️",
+                "modified": "📝",
+                "moved": "📦",
+                "renamed": "📛",
+                "staged": "🎯",
+                "unmerged": "⚠️",
+                "untracked": "❓",
+                "ignored": "🙈"
+            },
+            "validation_rules": [
+                "All git status types must have distinct icons",
+                "Icons should be intuitive and internationally recognizable",
+                "Must provide upstream tracking information"
+            ]
+        },
+        "enhanced_dotnet_segment": {
+            "description": "Enhanced .NET segment with version and context awareness",
+            "required": true,
+            "expected_properties": {
+                "type": "dotnet",
+                "properties.prefix": "🔷 .NET ",
+                "properties.display_version": true,
+                "properties.display_mode": "context",
+                "properties.missing_command_text": ""
+            },
+            "validation_rules": [
+                "Must show version for .NET projects",
+                "Should appear after git but before other language segments",
+                "Must handle missing .NET CLI gracefully"
+            ]
+        }
+    },
+    "performance_tests": {
+        "segment_count": {
+            "max_segments_per_block": 15,
+            "description": "Maximum segments per block to maintain performance"
+        },
+        "icon_complexity": {
+            "max_emoji_per_segment": 2,
+            "description": "Limit emoji usage to prevent rendering issues"
+        },
+        "conditional_templates": {
+            "max_conditions_per_template": 3,
+            "description": "Limit template complexity for parsing performance"
+        }
+    },
+    "accessibility_tests": {
+        "color_contrast": {
+            "min_contrast_ratio": 4.5,
+            "description": "WCAG AA compliance for foreground/background colors"
+        },
+        "icon_fallbacks": {
+            "required": true,
+            "description": "All segments must handle missing font/emoji gracefully"
+        }
+    },
+    "integration_tests": {
+        "terminal_compatibility": [
+            "Windows Terminal",
+            "PowerShell 7+",
+            "VS Code Terminal",
+            "Azure Cloud Shell"
+        ],
+        "oh_my_posh_version": ">=18.0.0"
+    }
+} 
