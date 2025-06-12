@@ -52,7 +52,7 @@ A feature-rich Oh My Posh theme optimized for C# developers and multi-language d
 1. **Download the theme file**:
    ```powershell
    # Download to your Oh My Posh themes directory
-   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/[your-repo]/posh-1/main/solarized_dark.omp.json" -OutFile "~/.poshthemes/solarized_dark_enhanced.omp.json"
+   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/gordug/posh-1/main/solarized_dark.omp.json" -OutFile "~/.poshthemes/solarized_dark_enhanced.omp.json"
    ```
 
 2. **Apply the theme**:
@@ -64,7 +64,7 @@ A feature-rich Oh My Posh theme optimized for C# developers and multi-language d
 
 1. **Clone this repository**:
    ```powershell
-   git clone https://github.com/[your-repo]/posh-1.git
+   git clone https://github.com/gordug/posh-1.git
    cd posh-1
    ```
 
@@ -303,7 +303,7 @@ $env:POSHLOG_LEVEL = "debug"
 
 ```powershell
 # Clone and setup
-git clone https://github.com/[your-repo]/posh-1.git
+git clone https://github.com/gordug/posh-1.git
 cd posh-1
 
 # Install development dependencies
@@ -344,8 +344,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/[your-repo]/posh-1/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/[your-repo]/posh-1/discussions)
+- **Issues**: [GitHub Issues](https://github.com/gordug/posh-1/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/gordug/posh-1/discussions)
 - **Documentation**: [Oh My Posh Docs](https://ohmyposh.dev/docs/)
 
 ---
