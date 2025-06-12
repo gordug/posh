@@ -63,7 +63,7 @@ This testing framework provides comprehensive validation for the enhanced Solari
 - **Positioning**: First segment for immediate visibility
 
 ### Execution Time Tests
-- **Threshold**: 500ms minimum for build performance monitoring
+- **Threshold**: 500ms maximum for build performance monitoring
 - **Icon**: ⏱️ time-related visual indicator
 - **Style**: "roundrock" format for readability
 - **Placement**: Right-aligned to minimize interference
