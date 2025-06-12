@@ -220,7 +220,8 @@
                     "background": "#eee8d5",
                     "properties": {
                         "prefix": "☁️ ",
-                        "display_mode": "context"
+                        "display_mode": "context",
+                        "missing_command_text": ""
                     }
                 }
             ]
