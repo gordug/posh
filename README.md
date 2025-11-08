@@ -52,7 +52,7 @@ A feature-rich Oh My Posh theme optimized for C# developers and multi-language d
 1. **Download the theme file**:
    ```powershell
    # Download to your Oh My Posh themes directory
-   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/gordug/posh-1/main/solarized_dark.omp.json" -OutFile "~/.poshthemes/solarized_dark_enhanced.omp.json"
+   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/gordug/posh/main/solarized_dark.omp.json" -OutFile "~/.poshthemes/solarized_dark_enhanced.omp.json"
    ```
 
 2. **Apply the theme**:
